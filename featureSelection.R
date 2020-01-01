@@ -235,6 +235,10 @@ summary(atp)
 atp[is.na(atp)] <- 0
 summary(atp)
 
+# Remove variables not to be used as predictors
+atp <- atp %>% select(-c(tourney_id, tourney_name, tourney_level, best_of, minutes,
+                         round, name.p0, name.p1, hand.p0, hand.p1, surface))
+
 # Use 2019 for validation set
 validation <- atp %>%
   filter(tourney_date > 20190000)
